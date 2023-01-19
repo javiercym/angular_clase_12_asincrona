@@ -1,0 +1,54 @@
+<div class="container"><br>
+    <h5>Formulario de contacto</h5>
+
+    <div *ngIf="status">
+        <h3 class="text-center p-2 mt-2 mb-4" class="messaje">Gracias por comunicarte con nosotros</h3>
+    </div>
+
+    <form [formGroup]="form">
+        
+        <div class="col">
+          
+          <div class="mb-3">
+            <label class="form-label">Nombre *</label>
+            <input type="text" class="form-control" formControlName="name" [ngClass]="{'error-border': form.get('name')?.invalid &&  form.get('name')?.touched}">
+
+            <div *ngIf="form.get('name')?.invalid &&  form.get('name')?.touched" class="error">
+                El Nombre es requerido
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-control" formControlName="email" [ngClass]="{'error-border': form.get('email')?.invalid &&  form.get('email')?.touched}">
+
+            <div *ngIf="form.get('email')?.invalid &&  form.get('email')?.touched" class="error">
+                El Email es requerido
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Celular</label>
+            <input type="number" class="form-control" formControlName="phone" [ngClass]="{'error-border': form.get('phone')?.invalid &&  form.get('phone')?.touched}">
+
+            <div *ngIf="form.get('phone')?.invalid &&  form.get('phone')?.touched" class="error">
+                El Telefono es requerido
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Asunto *</label>
+            <input type="text" class="form-control" formControlName="subject" [ngClass]="{'error-border': form.get('subject')?.invalid &&  form.get('subject')?.touched}">
+
+            <div *ngIf="form.get('subject')?.invalid &&  form.get('subject')?.touched" class="error">
+                El Asunto es requerido
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mensaje</label>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid" (click)="onSubmit()">Enviar</button>
+          </div>
+          
+        </div>
+      </form>
+</div>
